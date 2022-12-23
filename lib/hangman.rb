@@ -1,7 +1,5 @@
 class Game
-  def initialize
-    dictionary = Dictionary.new
-    dictionary.load_dictionary('google-10000-english-no-swears.txt')
+  def initialize(dictionary)
     @secret_word = dictionary.select_word
     @mistakes_left = 7
     @correct_letters = []
@@ -78,5 +76,7 @@ class Dictionary
   end
 end
 
-game = Game.new
+dictionary = Dictionary.new
+dictionary.load_dictionary('google-10000-english-no-swears.txt')
+game = Game.new(dictionary)
 game.play_game
