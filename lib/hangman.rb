@@ -35,12 +35,18 @@ class Game
     puts "Correct letters: #{@correct_letters * ','}"
     puts "Incorrect letters: #{@incorrect_letters * ','}"
     puts @display_string
+  end
+
+  def decrement_oops_counter
     @mistakes_left -= 1 if @incorrect_letters.include?(@guess)
+  end
+
+  def update_display
     puts "Mistakes left: #{@mistakes_left}"
     puts @secret_word if @mistakes_left == 0
   end
 
-  def display_end
+  def display_game_over
     if @display_string.count('_').zero?
       puts "Victory!"
     elsif @display_string.include?('_') && @mistakes_left == 0
@@ -54,7 +60,9 @@ class Game
       self.check_letter
       self.build_display_string
       self.display_game
-      self.display_end
+      self.decrement_oops_counter
+      self.update_display
+      self.display_game_over
     end
   end
 end
