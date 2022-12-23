@@ -7,8 +7,8 @@ class Game
     @display_string = '_'
   end
 
-  def input_guess (guess)
-    @guess = guess
+  def input_guess
+    @guess = gets.chomp
   end
 
   def check_guess
@@ -37,7 +37,7 @@ class Game
     puts @display_string
   end
 
-  def decrement_oops_counter
+  def decrement_mistakes
     @mistakes_left -= 1 if @incorrect_letters.include?(@guess)
   end
 
@@ -56,13 +56,13 @@ class Game
 
   def play_game
     while @mistakes_left > 0 && @display_string.include?('_') do
-      self.input_guess(gets.chomp)
-      self.check_guess
-      self.build_display_string
-      self.display_game
-      self.decrement_oops_counter
-      self.update_display
-      self.display_game_over
+      input_guess
+      check_guess
+      build_display_string
+      display_game
+      decrement_mistakes
+      update_display
+      display_game_over
     end
   end
 end
@@ -88,3 +88,15 @@ dictionary = Dictionary.new
 dictionary.load_dictionary('google-10000-english-no-swears.txt')
 game = Game.new(dictionary)
 game.play_game
+
+
+rnbqkbnr
+pppp ppp
+--------
+----p---
+--------
+-----N--
+PPPPPPPP
+RNBQKB R
+
+1. Nf3 e5
