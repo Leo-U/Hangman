@@ -11,7 +11,7 @@ class Game
     @guess = guess
   end
 
-  def check_letter
+  def check_guess
     if @secret_word.include?(@guess)
       @correct_letters << @guess
     else
@@ -57,7 +57,7 @@ class Game
   def play_game
     while @mistakes_left > 0 && @display_string.include?('_') do
       self.input_guess(gets.chomp)
-      self.check_letter
+      self.check_guess
       self.build_display_string
       self.display_game
       self.decrement_oops_counter
