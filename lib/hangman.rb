@@ -88,15 +88,3 @@ dictionary = Dictionary.new
 dictionary.load_dictionary('google-10000-english-no-swears.txt')
 game = Game.new(dictionary)
 game.play_game
-
-
-rnbqkbnr
-pppp ppp
---------
-----p---
---------
------N--
-PPPPPPPP
-RNBQKB R
-
-1. Nf3 e5
