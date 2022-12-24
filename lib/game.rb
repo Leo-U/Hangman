@@ -80,9 +80,9 @@ class Game
       handle_input
       check_guess
       build_display_string
-      print_display_1
+      print_display1
       decrement_mistakes
-      print_display_2
+      print_display2
       print_game_over
     end
   end
