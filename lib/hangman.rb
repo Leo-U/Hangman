@@ -2,13 +2,17 @@ require 'json'
 
 module GamePersistence
   def save_game
-    #iterates over instance vars and makes hash of them:
-    game_data = instance_variables.each_with_object({}) do |var, result|
-      result[var[1..-1].to_sym] = instance_variable_get(var)
+    begin
+      #iterates over instance vars and makes hash of them:
+      game_data = instance_variables.each_with_object({}) do |var, result|
+        result[var[1..-1].to_sym] = instance_variable_get(var)
+      end
+      #serializes the hash and writes it to file:
+      serialized_game = JSON.dump(game_data)
+      File.write('saved_game.json', serialized_game)      
+    rescue => exception
+      puts "An error occurred while saving the game: #{exception.message}"
     end
-    #serializes the hash and writes it to file:
-    serialized_game = JSON.dump(game_data)
-    File.write('saved_game.json', serialized_game)
   end
 
   def load_game
