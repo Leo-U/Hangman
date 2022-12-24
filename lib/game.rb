@@ -40,11 +40,12 @@ class Game
     @display_string = ''
     secret = @secret_word.split ''
     secret.each_with_index do |el, _i|
-      @display_string += if @correct_letters.include?(el)
-                           "#{el} "
-                         else
-                           '_ '
-                         end
+      @display_string +=
+        if @correct_letters.include?(el)
+          "#{el} "
+        else
+          '_ '
+        end
     end
   end
 
