@@ -17,20 +17,14 @@ class Game
   end
 
   def handle_input
-    loop do
-      @input = gets.chomp.downcase
-      action, game_number = @input.split(' ')
-      if action == 'save' || action == 'load'
-        send(action, game_number)
-        break
-      elsif @input =~ /^[a-z]$/
-        break
-      else
-        puts 'Typo. Try again.'
-      end
-    end
+    @input = gets.chomp.downcase
+    action, game_number = @input.split(' ')
+    return send(action, game_number) if ['save', 'load'].include?(action)
+    return if @input =~ /^[a-z]$/
+    puts 'Typo. Try again.'
+    handle_input
   end
-
+  
   def check_guess
     if @secret_word.include?(@input)
       @correct_letters << @input
