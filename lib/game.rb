@@ -17,14 +17,13 @@ class Game
   end
 
   def handle_input
-    @input = gets.chomp.downcase
-    if @input == 'save game'
-      save_game
-    elsif @input == 'load game'
-      load_game
-    elsif @input != 'save game' && @input != 'load game' && @input.length != 1
-      puts 'Typo. Try again.'
+    loop do
       @input = gets.chomp.downcase
+      if @input == 'save game' || @input == 'load game' ||  @input =~ /^[a-z]$/
+        break
+      else
+        puts 'Typo. Try again.'
+      end
     end
   end
 
