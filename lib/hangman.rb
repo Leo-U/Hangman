@@ -1,21 +1,57 @@
+require 'json'
+
+module GamePersistence
+  def save_game
+    #iterates over instance vars and makes hash of them:
+    game_data = instance_variables.each_with_object({}) do |var, result|
+      result[var[1..-1].to_sym] = instance_variable_get(var)
+    end
+    #serializes the hash and writes it to file:
+    serialized_game = JSON.dump(game_data)
+    File.write('saved_game.json', serialized_game)
+  end
+
+  def load_game
+    begin
+      game_data = File.read('saved_game.json')
+      serialized_game = JSON.parse(game_data, symbolize_names: true)
+      serialized_game.each do |var, value|
+        instance_variable_set("@#{var}", value)
+      end
+    rescue => exception
+      puts "An error occurred while loading the game: #{exception.message}"
+    end
+  end
+end
+
 class Game
+  include GamePersistence
   def initialize(dictionary)
     @secret_word = dictionary.select_word
     @mistakes_left = 7
     @correct_letters = []
     @incorrect_letters = []
     @display_string = '_'
+    @input = ''
   end
 
-  def input_guess
-    @guess = gets.chomp
+  def handle_input
+    @input = gets.chomp.downcase
+    if @input == 'save game'
+      save_game
+    elsif @input == 'load game'
+      load_game
+    elsif @input != 'save game' && @input != 'load game' && @input.length > 1
+      puts 'Typo. Try again.'
+      @input = gets.chomp.downcase
+    end
   end
 
   def check_guess
-    if @secret_word.include?(@guess)
-      @correct_letters << @guess
-    else
-      @incorrect_letters << @guess
+    if @secret_word.include?(@input)
+      @correct_letters << @input
+    elsif !@secret_word.include?(@input) && @input.length == 1
+      @incorrect_letters << @input
     end
   end
 
@@ -31,6 +67,9 @@ class Game
     end
   end
 
+  def prompt_choice
+    puts "Enter a letter to play Hangman, or enter 'save game' or 'load game' during play."
+  end
   def display_game
     puts "Correct letters: #{@correct_letters * ','}"
     puts "Incorrect letters: #{@incorrect_letters * ','}"
@@ -38,7 +77,7 @@ class Game
   end
 
   def decrement_mistakes
-    @mistakes_left -= 1 if @incorrect_letters.include?(@guess)
+    @mistakes_left -= 1 if @incorrect_letters.include?(@input)
   end
 
   def update_display
@@ -55,8 +94,9 @@ class Game
   end
 
   def play_game
+    prompt_choice
     while @mistakes_left > 0 && @display_string.include?('_') do
-      input_guess
+      handle_input
       check_guess
       build_display_string
       display_game
