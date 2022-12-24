@@ -19,12 +19,13 @@ class Game
   def handle_input
     @input = gets.chomp.downcase
     action, game_number = @input.split(' ')
-    return send(action, game_number) if ['save', 'load'].include?(action)
+    return send(action, game_number) if %w[save load].include?(action)
     return if @input =~ /^[a-z]$/
+
     puts 'Typo. Try again.'
     handle_input
   end
-  
+
   def check_guess
     if @secret_word.include?(@input)
       @correct_letters << @input
@@ -47,7 +48,7 @@ class Game
   end
 
   def prompt_choice
-    puts "Enter a letter to play Hangman, or enter 'save' or 'load' followed by the game number at any time during play."
+    puts "Enter a letter to play Hangman. Enter 'save' or 'load' followed by a game number to load/save games."
   end
 
   def display_game
