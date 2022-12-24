@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GamePersistence
   def save_game
     # iterates over instance vars and makes hash of them:

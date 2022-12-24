@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Dictionary
   def initialize(_contents = 'placeholder')
     @contents = 'placeholder'
