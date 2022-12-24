@@ -19,7 +19,11 @@ class Game
   def handle_input
     loop do
       @input = gets.chomp.downcase
-      if @input == 'save game' || @input == 'load game' ||  @input =~ /^[a-z]$/
+      action, game_number = @input.split(' ')
+      if action == 'save' || action == 'load'
+        send(action, game_number)
+        break
+      elsif @input =~ /^[a-z]$/
         break
       else
         puts 'Typo. Try again.'
@@ -49,7 +53,7 @@ class Game
   end
 
   def prompt_choice
-    puts "Enter a letter to play Hangman, or enter 'save game' or 'load game' at any time during play."
+    puts "Enter a letter to play Hangman, or enter 'save' or 'load' followed by the game number at any time during play."
   end
 
   def display_game
