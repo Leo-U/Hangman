@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'json'
 
 module GamePersistence
   def save_game
     # iterates over instance vars and makes hash of them:
     game_data = instance_variables.each_with_object({}) do |var, result|
-      result[var[1..-1].to_sym] = instance_variable_get(var)
+      result[var[1..].to_sym] = instance_variable_get(var)
     end
     # serializes the hash and writes it to file:
     serialized_game = JSON.dump(game_data)
@@ -61,7 +63,7 @@ class Game
     secret = @secret_word.split ''
     secret.each_with_index do |el, _i|
       @display_string += if @correct_letters.include?(el)
-                           el + ' '
+                           "#{el} "
                          else
                            '_ '
                          end
@@ -69,7 +71,7 @@ class Game
   end
 
   def prompt_choice
-    puts "Enter a letter to play Hangman, or enter 'save game' or 'load game' during play."
+    puts "Enter a letter to play Hangman, or enter 'save game' or 'load game' at any time during play."
   end
 
   def display_game
@@ -84,20 +86,20 @@ class Game
 
   def update_display
     puts "Mistakes left: #{@mistakes_left}"
-    puts @secret_word if @mistakes_left == 0
+    puts @secret_word if @mistakes_left.zero?
   end
 
   def display_game_over
     if @display_string.count('_').zero?
       puts 'Victory!'
-    elsif @display_string.include?('_') && @mistakes_left == 0
+    elsif @display_string.include?('_') && @mistakes_left.zero?
       puts 'Haha an adult just lost at Hangman!'
     end
   end
 
   def play_game
     prompt_choice
-    while @mistakes_left > 0 && @display_string.include?('_')
+    while @mistakes_left.positive? && @display_string.include?('_')
       handle_input
       check_guess
       build_display_string
