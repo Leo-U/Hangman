@@ -2,34 +2,31 @@ require 'json'
 
 module GamePersistence
   def save_game
-    begin
-      #iterates over instance vars and makes hash of them:
-      game_data = instance_variables.each_with_object({}) do |var, result|
-        result[var[1..-1].to_sym] = instance_variable_get(var)
-      end
-      #serializes the hash and writes it to file:
-      serialized_game = JSON.dump(game_data)
-      File.write('saved_game.json', serialized_game)      
-    rescue => exception
-      puts "An error occurred while saving the game: #{exception.message}"
+    # iterates over instance vars and makes hash of them:
+    game_data = instance_variables.each_with_object({}) do |var, result|
+      result[var[1..-1].to_sym] = instance_variable_get(var)
     end
+    # serializes the hash and writes it to file:
+    serialized_game = JSON.dump(game_data)
+    File.write('saved_game.json', serialized_game)
+  rescue StandardError => e
+    puts "An error occurred while saving the game: #{e.message}"
   end
 
   def load_game
-    begin
-      game_data = File.read('saved_game.json')
-      serialized_game = JSON.parse(game_data, symbolize_names: true)
-      serialized_game.each do |var, value|
-        instance_variable_set("@#{var}", value)
-      end
-    rescue => exception
-      puts "An error occurred while loading the game: #{exception.message}"
+    game_data = File.read('saved_game.json')
+    serialized_game = JSON.parse(game_data, symbolize_names: true)
+    serialized_game.each do |var, value|
+      instance_variable_set("@#{var}", value)
     end
+  rescue StandardError => e
+    puts "An error occurred while loading the game: #{e.message}"
   end
 end
 
 class Game
   include GamePersistence
+
   def initialize(dictionary)
     @secret_word = dictionary.select_word
     @mistakes_left = 7
@@ -45,7 +42,7 @@ class Game
       save_game
     elsif @input == 'load game'
       load_game
-    elsif @input != 'save game' && @input != 'load game' && @input.length > 1
+    elsif @input != 'save game' && @input != 'load game' && @input.length != 1
       puts 'Typo. Try again.'
       @input = gets.chomp.downcase
     end
@@ -62,18 +59,19 @@ class Game
   def build_display_string
     @display_string = ''
     secret = @secret_word.split ''
-    secret.each_with_index do |el, i|
-      if @correct_letters.include?(el)
-        @display_string += el + ' '
-      else
-        @display_string += '_ '
-      end
+    secret.each_with_index do |el, _i|
+      @display_string += if @correct_letters.include?(el)
+                           el + ' '
+                         else
+                           '_ '
+                         end
     end
   end
 
   def prompt_choice
     puts "Enter a letter to play Hangman, or enter 'save game' or 'load game' during play."
   end
+
   def display_game
     puts "Correct letters: #{@correct_letters * ','}"
     puts "Incorrect letters: #{@incorrect_letters * ','}"
@@ -91,15 +89,15 @@ class Game
 
   def display_game_over
     if @display_string.count('_').zero?
-      puts "Victory!"
+      puts 'Victory!'
     elsif @display_string.include?('_') && @mistakes_left == 0
-      puts "Haha an adult just lost at Hangman!"
+      puts 'Haha an adult just lost at Hangman!'
     end
   end
 
   def play_game
     prompt_choice
-    while @mistakes_left > 0 && @display_string.include?('_') do
+    while @mistakes_left > 0 && @display_string.include?('_')
       handle_input
       check_guess
       build_display_string
@@ -112,8 +110,8 @@ class Game
 end
 
 class Dictionary
-  def initialize(contents = "placeholder")
-    @contents = "placeholder"
+  def initialize(_contents = 'placeholder')
+    @contents = 'placeholder'
   end
 
   def load_dictionary(file_name)
@@ -123,8 +121,7 @@ class Dictionary
   end
 
   def select_word
-    random_word = @contents.filter_map { |el| el.strip if el.strip.length.between?(5, 12)}.sample
-    random_word
+    @contents.filter_map { |el| el.strip if el.strip.length.between?(5, 12) }.sample
   end
 end
 
