@@ -33,7 +33,7 @@ class Game
   def check_guess
     if @secret_word.include?(@input)
       @correct_letters << @input
-    elsif !@secret_word.include?(@input) && @input.length == 1
+    elsif @secret_word.count(@input).zero? && @input.length == 1
       @incorrect_letters << @input
     end
   end
@@ -51,7 +51,7 @@ class Game
     end
   end
 
-  def display_game
+  def print_display1
     puts "Correct letters: #{@correct_letters * ','}"
     puts "Incorrect letters: #{@incorrect_letters * ','}"
     puts @display_string
@@ -61,12 +61,12 @@ class Game
     @mistakes_left -= 1 if @incorrect_letters.include?(@input)
   end
 
-  def update_display
+  def print_display2
     puts "Mistakes left: #{@mistakes_left}"
     puts @secret_word if @mistakes_left.zero?
   end
 
-  def display_game_over
+  def print_game_over
     if @display_string.count('_').zero?
       puts 'Victory!'
     elsif @display_string.include?('_') && @mistakes_left.zero?
@@ -80,10 +80,10 @@ class Game
       handle_input
       check_guess
       build_display_string
-      display_game
+      print_display_1
       decrement_mistakes
-      update_display
-      display_game_over
+      print_display_2
+      print_game_over
     end
   end
 end
