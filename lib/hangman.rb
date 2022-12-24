@@ -11,8 +11,8 @@ module GamePersistence
     # serializes the hash and writes it to file:
     serialized_game = JSON.dump(game_data)
     File.write('saved_game.json', serialized_game)
-  rescue StandardError => e
-    puts "An error occurred while saving the game: #{e.message}"
+    rescue StandardError => e
+      puts "An error occurred while saving the game: #{e.message}"
   end
 
   def load_game
@@ -21,8 +21,8 @@ module GamePersistence
     serialized_game.each do |var, value|
       instance_variable_set("@#{var}", value)
     end
-  rescue StandardError => e
-    puts "An error occurred while loading the game: #{e.message}"
+    rescue StandardError => e
+      puts "An error occurred while loading the game: #{e.message}"
   end
 end
 
