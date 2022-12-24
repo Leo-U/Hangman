@@ -16,6 +16,10 @@ class Game
     @input = ''
   end
 
+  def prompt_choice
+    puts "Enter a letter to play Hangman. Enter 'save' or 'load' followed by a game number to load/save games."
+  end
+
   def handle_input
     @input = gets.chomp.downcase
     action, game_number = @input.split(' ')
@@ -45,10 +49,6 @@ class Game
           '_ '
         end
     end
-  end
-
-  def prompt_choice
-    puts "Enter a letter to play Hangman. Enter 'save' or 'load' followed by a game number to load/save games."
   end
 
   def display_game
