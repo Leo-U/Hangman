@@ -31,7 +31,7 @@ class Game
     end
   end
 
-  # hidden non-essential details:
+  # hidden details:
   private
 
   def prompt_choice
