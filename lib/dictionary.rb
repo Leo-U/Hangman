@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Loads dictionary from file and randomly chooses dictionary word with two public classes:
 class Dictionary
   def initialize(_contents = 'placeholder')
     @contents = 'placeholder'

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Saves and loads games by serializing game state and writing it to file:
 module GamePersistence
   def save(game_number)
     # iterates over instance vars and makes hash of them:

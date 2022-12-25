@@ -4,6 +4,7 @@ require 'json'
 require_relative 'game_persistence'
 require_relative 'dictionary'
 
+# Contains the code playing a complete game:
 class Game
   include GamePersistence
 
@@ -15,6 +16,23 @@ class Game
     @display_string = '_'
     @input = ''
   end
+
+  # the public interface:
+  def play_game
+    prompt_choice
+    while @mistakes_left.positive? && @display_string.include?('_')
+      handle_input
+      check_guess
+      build_display_string
+      print_display1
+      decrement_mistakes
+      print_display2
+      print_game_over
+    end
+  end
+
+  # hidden non-essential details:
+  private
 
   def prompt_choice
     puts "Enter a letter to play Hangman. Enter 'save' or 'load' followed by a game number to load/save games."
@@ -31,9 +49,9 @@ class Game
   end
 
   def check_guess
-    if @secret_word.include?(@input)
+    if @secret_word.include?(@input) && @correct_letters.count(@input).zero?
       @correct_letters << @input
-    elsif @secret_word.count(@input).zero? && @input.length == 1
+    elsif @secret_word.count(@input).zero? && @input.length == 1 && @incorrect_letters.count(@input).zero?
       @incorrect_letters << @input
     end
   end
@@ -71,19 +89,6 @@ class Game
       puts 'Victory!'
     elsif @display_string.include?('_') && @mistakes_left.zero?
       puts 'Haha an adult just lost at Hangman!'
-    end
-  end
-
-  def play_game
-    prompt_choice
-    while @mistakes_left.positive? && @display_string.include?('_')
-      handle_input
-      check_guess
-      build_display_string
-      print_display1
-      decrement_mistakes
-      print_display2
-      print_game_over
     end
   end
 end
