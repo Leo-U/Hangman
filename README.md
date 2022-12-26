@@ -1,6 +1,6 @@
 #### Evaluating the Adherence to OOP Design Principles in a Hangman Project
 
-I write the following for the purpose of gaining a greater understanding of object-oriented design. Numbered below are the main principles of OOP design, along with my interpretations of what the principles actually are, as well as my interpretations of how my code adheres or does not adhere to each principle. I use the word 'interpretation' to hightlight the fact that there may be inaccuracies in my understanding, as is the risk when teaching oneself any complex concept.
+I write the following for the purpose of gaining a greater understanding of object-oriented design. Numbered below are the main principles of OOP design, along with my interpretations of what the principles actually are, as well as my interpretations of how my code adheres or does not adhere to each principle.
 
 1. Abstraction
 
