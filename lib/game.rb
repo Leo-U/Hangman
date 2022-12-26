@@ -4,7 +4,7 @@ require 'json'
 require_relative 'game_persistence'
 require_relative 'dictionary'
 
-# Contains the code playing a complete game:
+# Contains the code for playing a game:
 class Game
   include GamePersistence
 
@@ -19,7 +19,7 @@ class Game
 
   # the public interface:
   def play_game
-    prompt_choice
+    prompt_player_choice
     while @mistakes_left.positive? && @display_string.include?('_')
       handle_input
       check_guess
@@ -31,10 +31,10 @@ class Game
     end
   end
 
-  # hidden details:
+  # hidden implementation details:
   private
 
-  def prompt_choice
+  def prompt_player_choice
     puts "Enter a letter to play Hangman. Enter 'save' or 'load' followed by a game number to load/save games."
   end
 
