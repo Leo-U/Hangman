@@ -22,11 +22,13 @@ The `Dictionary` class is partially encapsulated in the sense that dictionary-re
 
 The `GamePersistence` module is encapsulated in the sense its methods are private and can only be accessed by the `Game` class that `include`s it.
 
-My code wraps a bunch of methods with `private`. Making use of `private` in this way is considered an encapsulation method even though doing so also helps achieve abstraction. The reason for this is, to the best of my understanding, that encapsulation is a technique that is used to achieve abstraction. That is, abstraction is a design goal, and encapsulation is one way to accomplish it. From, the use of abstraction also helps to enable encapsulation.
+My code wraps a bunch of methods with `private`. Making use of `private` in this way is considered an encapsulation method even though doing so also helps achieve abstraction. The reason for this is, to the best of my understanding, that encapsulation is a technique that is used to achieve abstraction. That is, abstraction is a design goal, and encapsulation is one way to accomplish it. If I'm not mistaken, the use of abstraction also helps to enable encapsulation.
 
 ##### Single Responsibility Principle
 
-I feel that I followed the single responsibility principle in that 
+The single responsibility principle states that every class, module, or function/method in a program should only be doing one thing.
+
+I endeavored to follow the single responsibility principle by breaking up methods into methods that perform one task each, and by separating the save/load game functionality, the dictionary functionality, and the gameplay functionality into different classes/modules. One could argue that it would be a good idea to also separate the display functionality into a separate class, but that was not done.
 
 ##### Inheritance
 
