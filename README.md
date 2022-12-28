@@ -1,6 +1,6 @@
 #### Determining the Adherence to OOP Design Principles in a Hangman Project
 
-I write the following for the purpose of gaining a foundational understanding of object-oriented design. Presented below are the main principles of OOP design, along with my understanding of what the principles actually are, as well as my interpretations of how my code adheres or does not adhere to each principle.
+I write the following for the purpose of gaining a foundational understanding of object-oriented design. Below are the main principles of OOP design, along with my understanding of what the principles actually are, as well as my interpretations of how my code adheres or does not adhere to each principle.
 
 ##### Abstraction
 
@@ -28,12 +28,14 @@ My code wraps a bunch of methods with `private`. Making use of `private` in this
 
 The single responsibility principle states that every class, module, or function/method in a program should only be doing one thing.
 
-I endeavored to follow the single responsibility principle by breaking up methods into methods that perform one task each, and by separating the save/load game functionality, the dictionary functionality, and the gameplay functionality into different classes/modules. One could argue that it would be a good idea to also separate the display functionality into a separate class, but that was not done.
+I endeavored to follow the single responsibility principle by making the methods in the `Game` class perform one task each, and by separating the save/load game functionality, the dictionary functionality, and the gameplay functionality into different classes/modules. One could argue that it would be a good idea to also separate the display functionality into a separate class, but that has not been done.
 
 ##### Inheritance
+Inheritance is the process by which qualities are passed down — in the context of OOP, inheritance means that one class can be set up so that it also has access to data that's in another class. This is similar to how a class can `include` a module, but that isn't considered to be the same thing.
 
-Inheritence was not implemented in this project.
+Inheritence has not been implemented in this project.
 
 ##### Polymorphism
+In OOP, when a subclass inherits from a superclass, that subclass will have additional functionality in addition to its parent's code, or will override certain inherited methods — this is polymorphism, the ability of a thing to have have more than one form. Polymorphism can be implemented in other ways as well.
 
-Polymorphism was not implemented in this project.
+Polymorphism has not been implemented in this project.
