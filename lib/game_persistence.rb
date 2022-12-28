@@ -2,6 +2,7 @@
 
 # Saves and loads games by serializing game state and writing it to file:
 module GamePersistence
+  private
   def save(game_number)
     # iterates over instance vars and makes hash of them:
     game_data = instance_variables.each_with_object({}) do |var, result|
@@ -13,7 +14,7 @@ module GamePersistence
   rescue StandardError => e
     puts "An error occurred while saving the game: #{e.message}"
   end
-
+    #---------
   def load(game_number)
     game_data = File.read("saved_game_#{game_number}.json")
     serialized_game = JSON.parse(game_data, symbolize_names: true)

@@ -4,7 +4,7 @@ require 'json'
 require_relative 'game_persistence'
 require_relative 'dictionary'
 
-# Contains the code for playing a game:
+# Plays and displays a complete game:
 class Game
   include GamePersistence
 
@@ -88,7 +88,7 @@ class Game
     if @display_string.count('_').zero?
       puts 'Victory!'
     elsif @display_string.include?('_') && @mistakes_left.zero?
-      puts 'Haha an adult just lost at Hangman!'
+      puts 'You lose!'
     end
   end
 end
