@@ -14,7 +14,7 @@ By separating the code for saving and loading games into the `GamePersistence` m
 
 #### Encapsulation
 
-'Encapsulation' refers to bundling methods and data into a single unit. That unit can be a class, a structure, or an interface. Encapsulation can be achieved through
+'Encapsulation' refers to bundling methods and data into a single unit. That unit can be a class, a structure, or an interface. Encapsulation can be achieved by privatizing instance variables, using getters and setters, implementing an interface, or by using design patterns.
 
 The `Game` class is one such unit. Its methods and instance variables are bundled and confined to its interior.
 
