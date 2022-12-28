@@ -34,10 +34,10 @@ I followed the single responsibility principle by making the methods in the `Gam
 
 Inheritance is the process by which qualities are passed down — in the context of OOP, inheritance means that one class can be set up so that it also has access to data that is in another class. This is similar to how a class can include a module, but that is not considered inheritance. Inheritance is useful because it allows for code reuse and modularization.
 
-I have not used inheritance in this project.
+Inheritence was not used in this project, and is a potential area of improvement.
 
 #### Polymorphism
 
 'Polymorphism' refers to the ability of different objects to respond to the same message in different ways. This is achieved through inheritance, method overriding, and other techniques.
 
-I have not used polymorphism in this project.
+As with inheritance, polymorphism was not implemented in this project, and is a potential area of improvement.
