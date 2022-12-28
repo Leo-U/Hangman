@@ -14,7 +14,7 @@ module GamePersistence
   rescue StandardError => e
     puts "An error occurred while saving the game: #{e.message}"
   end
-    #---------
+
   def load(game_number)
     game_data = File.read("saved_game_#{game_number}.json")
     serialized_game = JSON.parse(game_data, symbolize_names: true)
