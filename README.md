@@ -28,7 +28,7 @@ My code wraps a bunch of methods with `private`. Making use of `private` in this
 
 The single responsibility principle states that every class, module, or function/method in a program should only be doing one thing.
 
-I attempted to follow the single responsibility principle by making the methods in the `Game` class perform one task each, and by separating the save/load game functionality, the dictionary functionality, and the gameplay functionality into different classes/modules. One could argue that it would be a good idea to also separate the display functionality into a separate class, but that has not been done.
+I followed the single responsibility principle by making the methods in the `Game` class perform one task each, and by separating the save/load game functionality, the dictionary functionality, and the gameplay functionality into different classes/modules. One could argue that it would be a good idea to also separate the display functionality into a separate class, but that has not been done.
 
 #### Inheritance
 
