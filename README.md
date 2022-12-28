@@ -38,6 +38,6 @@ I have not used inheritance in this project.
 
 #### Polymorphism
 
-'Polymorphism' refers to the ability of different objects to respond to the same message in different ways. This is achieved through inheritance and method overriding.
+'Polymorphism' refers to the ability of different objects to respond to the same message in different ways. This is achieved through inheritance, method overriding, and other techniques.
 
 I have not used polymorphism in this project.
