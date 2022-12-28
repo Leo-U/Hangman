@@ -32,7 +32,7 @@ I attempted to follow the single responsibility principle by making the methods 
 
 #### Inheritance
 
-Inheritance is the process by which qualities are passed down - in the context of OOP, inheritance means that one class can be set up so that it also has access to data that is in another class. This is similar to how a class can include a module, but that is not considered inheritance. Inheritance is useful because it allows for code reuse and modularization.
+Inheritance is the process by which qualities are passed down — in the context of OOP, inheritance means that one class can be set up so that it also has access to data that is in another class. This is similar to how a class can include a module, but that is not considered inheritance. Inheritance is useful because it allows for code reuse and modularization.
 
 I have not used inheritance in this project.
 
