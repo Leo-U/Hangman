@@ -22,7 +22,7 @@ The `Dictionary` class is partially encapsulated in the sense that dictionary-re
 
 The `GamePersistence` module is encapsulated in the sense its methods are private and can only be accessed by the `Game` class that `include`s it.
 
-My code wraps a bunch of methods with `private`. Making use of `private` in this way is considered an encapsulation method even though doing so also helps achieve abstraction. The reason for this is, to the best of my understanding, that *encapsulation is a technique that is used to achieve abstraction*. That is, abstraction is a design goal, and encapsulation is one way to accomplish it.
+My code wraps a bunch of methods with `private`. Making use of `private` in this way is considered an encapsulation method even though doing so also helps achieve abstraction. The reason for this is, to the best of my understanding, that encapsulation is a technique that is used to achieve abstraction. That is, abstraction is a design goal, and encapsulation is one way to accomplish it. From, the use of abstraction also helps to enable encapsulation.
 
 ##### Single Responsibility Principle
 
