@@ -6,7 +6,7 @@ I am writing this to gain a foundational understanding of object-oriented design
 
 'Abstraction' refers to representing essential details while hiding non-essential details. Essential details are abstracted away, and non-essential or sensitive details are hidden. Essential details can be represented by classes, properties, or interfaces. In computing, an interface is a boundary across which information can be exchanged between two parts of a machine (hardware or software) or between a human and the machine. In OOP, 'interface' can be defined as a set of one or more methods in a class that allow a user or code outside the program to interact with the class. By only using that interface to interact with the class, and by setting all other methods and data in the class to `private`, abstraction is achieved.
 
-The `play_game` method of the `Game` class is an interface for playing Hangman. None of the other methods or attributes are directly used by the player or by code outside the class. Therefore, the `play_game` interface has been successfully separated from the implementation details (the other methods and properties) in the Game class, allowing adherence to the abstraction principle. This is further reinforced by the fact that all other methods are set to private (as a result of writing this readme!).
+The `play_game` method of the `Game` class is an interface for playing Hangman. None of the other methods or attributes are directly used by the player or by code outside the class. The `play_game` interface has been separated from the implementation details (the other methods and properties) in the Game class, thereby adhering to the abstraction principle. This is further reinforced by the fact that all other methods are set to private (as a result of writing this readme!).
 
 The `Dictionary` class does not follow the abstraction principle because all of its methods are public and used outside the class.
 
@@ -28,7 +28,7 @@ The `GamePersistence` module is encapsulated in the sense that its methods are p
 
 The single responsibility principle states that every class, module, or function/method in a program should only be doing one thing.
 
-The single responsibility principle is followed in this project because its methods perform one task each. Additionally, the `Game`, `Dictionary`, and `GamePersistence` classes/module are each responsible for managing their respective data. Separating the display functionality into a separate class would be a potential improvement.
+The single responsibility principle is followed in this project because its methods perform one task each. Additionally, `Game`, `Dictionary`, and `GamePersistence` are each responsible for managing their respective data. Separating the display functionality into a separate class would be a potential improvement.
 
 #### Inheritance
 
