@@ -28,11 +28,11 @@ The `GamePersistence` module is encapsulated in the sense that its methods are p
 
 The single responsibility principle states that every class, module, or function/method in a program should only be doing one thing.
 
-I followed the single responsibility principle by making the methods in the `Game` class perform one task each, and by separating the save/load game functionality, the dictionary functionality, and the gameplay functionality into different classes/modules. One could argue that it would be a good idea to also separate the display functionality into a separate class, but that has not been done.
+The single responsibility principle is followed in this project because its methods perform one task each. Additionally, the `Game`, `Dictionary`, and `GamePersistence` classes/module are each responsible for managing their respective data. Separating the display functionality into a separate class would be a potential improvement.
 
 #### Inheritance
 
-Inheritance is the process by which qualities are passed down — in the context of OOP, inheritance means that one class can be set up so that it also has access to data that is in another class. This is similar to how a class can include a module, but that is not considered inheritance. Inheritance is useful because it allows for code reuse and modularization.
+Inheritance is the process by which qualities are passed down — in the context of OOP, inheritance means that one class can be given acess to another class's data. This is similar to how a class can `include` a module, but including a module is not considered inheritance. Inheritance is useful because it allows for code reuse and modularization.
 
 Inheritence was not used in this project, and is a potential area of improvement.
 
