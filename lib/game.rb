@@ -70,6 +70,7 @@ class Game
   end
 
   def print_display1
+    puts "Enter 'save' or 'load' followed by a game number to load/save games."
     puts "Correct letters: #{@correct_letters * ','}"
     puts "Incorrect letters: #{@incorrect_letters * ','}"
     puts @display_string
