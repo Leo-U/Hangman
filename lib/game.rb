@@ -23,11 +23,11 @@ class Game
     while @mistakes_left.positive? && @display_string.include?('_')
       handle_input
       check_guess
+      system('clear')
       build_display_string
       print_display1
       decrement_mistakes
       print_display2
-      print_game_over
     end
   end
 
@@ -82,9 +82,6 @@ class Game
   def print_display2
     puts "Mistakes left: #{@mistakes_left}"
     puts @secret_word if @mistakes_left.zero?
-  end
-
-  def print_game_over
     if @display_string.count('_').zero?
       puts 'Victory!'
     elsif @display_string.include?('_') && @mistakes_left.zero?

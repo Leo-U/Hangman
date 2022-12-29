@@ -16,13 +16,13 @@ By separating the code for saving and loading games into the `GamePersistence` m
 
 'Encapsulation' refers to bundling methods and data into a single unit. That unit can be a class, a structure, or an interface. Encapsulation can be achieved by privatizing instance variables, using getters and setters, implementing an interface, or by using design patterns.
 
-The `Game` class is one such unit. Its methods and instance variables are bundled and confined to its interior.
+My code wraps a bunch of methods with `private`. Making use of `private` in this way is considered an encapsulation method, even though it also helps achieve abstraction. The reason for this is, to the best of my understanding, that encapsulation is a technique used to achieve abstraction. That is, abstraction is a design goal, and encapsulation is one way to accomplish it. If I'm not mistaken, the use of abstraction also helps enable encapsulation.
+
+The `Game` class's methods and instance variables are bundled and confined to its interior, and only its interface is public. Therefore, `Game` has been sucessfully encapsulated.
 
 The `Dictionary` class is partially encapsulated in the sense that dictionary-related methods and data are defined inside the class, but is not encapsulated in the sense that all its methods are public.
 
 The `GamePersistence` module is encapsulated in the sense that its methods are private and can only be accessed by the `Game` class that `include`s it.
-
-My code wraps a bunch of methods with `private`. Making use of `private` in this way is considered an encapsulation method, even though it also helps achieve abstraction. The reason for this is, to the best of my understanding, that encapsulation is a technique used to achieve abstraction. That is, abstraction is a design goal, and encapsulation is one way to accomplish it. If I'm not mistaken, the use of abstraction also helps enable encapsulation.
 
 #### Single Responsibility Principle
 
