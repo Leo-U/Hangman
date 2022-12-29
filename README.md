@@ -1,4 +1,4 @@
-### Determining OOP Design Quality in a Hangman Project
+### OOP Design Principles in Hangman
 
 I am writing this to gain a foundational understanding of object-oriented design. Below are the main principles of OOP design, along with my understanding of what the principles actually are, as well as my interpretations of how my code adheres or does not adhere to each principle.
 
