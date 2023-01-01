@@ -59,7 +59,7 @@ class Game
   def build_display_string
     @display_string = ''
     secret = @secret_word.split ''
-    secret.each_with_index do |el, _i|
+    secret.each do |el|
       @display_string +=
         if @correct_letters.include?(el)
           "#{el} "
